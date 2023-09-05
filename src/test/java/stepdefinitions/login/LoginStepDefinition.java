@@ -29,12 +29,27 @@ public class LoginStepDefinition {
     @When("I log in with valid credentials")
     public void i_log_in_with_valid_credentials() {
         when(theActorInTheSpotlight()).attemptsTo(
-                EnterCredentials.withUsername(frameworkProperties.getProperty("username")).andPassword(frameworkProperties.getProperty("password"))
+                EnterCredentials.withUsername(frameworkProperties.getProperty("valid-username")).andPassword(frameworkProperties.getProperty("valid-password"))
         );
     }
 
     @Then("I should be successfully logged in")
     public void i_should_be_successfully_logged_in() {
+        then(theActorInTheSpotlight()).attemptsTo(
+                Ensure.that(DemoLoginPage.SIGN_IN_BUTTON).isNotDisplayed()
+        );
+
+    }
+
+    @When("I log in with invalid credentials")
+    public void i_log_in_with_invalid_credentials() {
+        when(theActorInTheSpotlight()).attemptsTo(
+                EnterCredentials.withUsername(frameworkProperties.getProperty("invalid-username")).andPassword(frameworkProperties.getProperty("invalid-password"))
+        );
+    }
+
+    @Then("I should be unsuccessfully logged in")
+    public void i_should_be_unsuccessfully_logged_in() {
         then(theActorInTheSpotlight()).attemptsTo(
                 Ensure.that(DemoLoginPage.SIGN_IN_BUTTON).isNotDisplayed()
         );
