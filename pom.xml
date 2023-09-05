@@ -61,6 +61,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Logback is a logging library that provides Java developers with flexible and efficient tools for logging event -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
