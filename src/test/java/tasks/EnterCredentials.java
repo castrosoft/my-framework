@@ -14,7 +14,7 @@ public class EnterCredentials implements Task {
 
     public EnterCredentials(String username, String password) {
         this.username = username;
-        this.password = EncodePassword.decode64(password);
+        this.password = password;
     }
 
     public static LoginBuilder withUsername(String username) {
@@ -38,7 +38,7 @@ public class EnterCredentials implements Task {
         }
 
         public Performable andPassword(String password) {
-            return new EnterCredentials(username, EncodePassword.decode64(password));
+            return new EnterCredentials(username, password);
         }
     }
 }
