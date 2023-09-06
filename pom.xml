@@ -68,6 +68,13 @@
             <version>1.4.11</version>
         </dependency>
 
+        <!-- This is necessary because of the error "Could not instantiate class org.openqa.selenium.chrome.ChromeDriver" -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.4.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
