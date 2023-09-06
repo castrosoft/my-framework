@@ -5,11 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.DemoLoginPage;
 import tasks.EnterCredentials;
 import tasks.NavigateTo;
+import utils.Constants;
 import utils.FrameworkProperties;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.then;
@@ -31,9 +33,9 @@ public class LoginStepDefinition {
 
     @When("I log in with valid credentials")
     public void i_log_in_with_valid_credentials() {
-        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty("email"), frameworkProperties.getProperty("password"));
+        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
         when(theActorInTheSpotlight()).attemptsTo(
-                EnterCredentials.withUsername(frameworkProperties.getProperty("email")).andPassword(frameworkProperties.getProperty("password"))
+                EnterCredentials.withUsername(frameworkProperties.getProperty(Constants.EMAIL)).andPassword(frameworkProperties.getProperty(Constants.PASSWORD))
         );
     }
 
@@ -47,25 +49,25 @@ public class LoginStepDefinition {
 
     @When("I log in with an invalid password")
     public void i_log_in_with_an_invalid_password() {
-        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty("email"), frameworkProperties.getProperty("invalid-password"));
+        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.INVALID_PASSWORD));
         when(theActorInTheSpotlight()).attemptsTo(
-                EnterCredentials.withUsername(frameworkProperties.getProperty("email")).andPassword(frameworkProperties.getProperty("invalid-password"))
+                EnterCredentials.withUsername(frameworkProperties.getProperty(Constants.EMAIL)).andPassword(frameworkProperties.getProperty(Constants.INVALID_PASSWORD))
         );
     }
 
     @Then("I should see the message {string}")
     public void i_should_be_unsuccessfully_logged_in(String message) {
         then(theActorInTheSpotlight()).attemptsTo(
-                Ensure.that(DemoLoginPage.UNSUCCESSFUL_SIGN_IN_MESSAGE).hasTextContent("Login was unsuccessful. Please correct the errors and try again.\n" +
-                        message)
+                Ensure.that(DemoLoginPage.UNSUCCESSFUL_SIGN_IN_MESSAGE).text().contains(Constants.UNSUCCESSFUL_LOGIN_MESSAGE),
+                Ensure.that(DemoLoginPage.UNSUCCESSFUL_SIGN_IN_MESSAGE).text().contains(message)
         );
     }
 
     @When("I log in with an invalid email")
     public void i_log_in_with_an_invalid_email() {
-        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty("invalid-email"), frameworkProperties.getProperty("password"));
+        LOGGER.info("The username is {} and the password is {}", frameworkProperties.getProperty(Constants.INVALID_EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
         when(theActorInTheSpotlight()).attemptsTo(
-                EnterCredentials.withUsername(frameworkProperties.getProperty("invalid-email")).andPassword(frameworkProperties.getProperty("password"))
+                EnterCredentials.withUsername(frameworkProperties.getProperty(Constants.INVALID_EMAIL)).andPassword(frameworkProperties.getProperty(Constants.PASSWORD))
         );
     }
 
