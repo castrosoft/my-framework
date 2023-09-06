@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.DemoLoginPage;
@@ -26,6 +25,7 @@ public class LoginStepDefinition {
 
     @Given("{actor} navigate to the demo page")
     public void i_navigate_to_the_demo_page(Actor actor) {
+        LOGGER.info("The URL by default is: {}", Constants.WEBDRIVER_BASE_URL);
         actor.wasAbleTo(
                 NavigateTo.theLoginPage()
         );
