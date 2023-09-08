@@ -7,6 +7,9 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
 
 /**
+ * The JUnit Platform Suite Engine can be used to run Cucumber.
+ * Source = https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine
+ *
  * @Suite: This annotation marks the class as a test suite. In Cucumber, a test suite is a collection of scenarios
  * (test cases) that are executed together.
  * @IncludeEngines: This annotation indicates that this test suite should include the Cucumber execution engines to run

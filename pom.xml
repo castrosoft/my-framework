@@ -27,11 +27,42 @@
         <serenity.version>3.9.8</serenity.version>
         <junit-platform-suite.version>1.9.3</junit-platform-suite.version>
         <cucumber-junit-platform-engine.version>7.2.3</cucumber-junit-platform-engine.version>
+        <junit5.version>5.10.0</junit5.version>
     </properties>
 
     <dependencies>
 
-        <!-- io.cucumber.java.en.Given/When/Then -->
+        <!-- You can add Serenity BDD to an existing Maven project by adding the corresponding dependencies to your
+                pom.xml file. All Serenity BDD projects need the following core dependency: -->
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- To use JUnit 5 you will need the following dependencies: -->
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-junit5</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Cucumber you will need the following dependency: (@Given/@When/@Then) -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
@@ -39,7 +70,8 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Cucumber with JUnit 5 -->
+        <!-- Cucumber requires a test runner, either JUnit 4 or JUnit 5.
+                To use JUnit 5 you will need the following dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
@@ -53,10 +85,22 @@
             <scope>test</scope>
         </dependency>
 
-        <!--  Ensure  -->
+        <!-- If you are using the Screenplay pattern, you will also need the Screenplay dependencies: -->
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-ensure</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay-webdriver</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
@@ -114,6 +158,13 @@
                     <tags>${tags}</tags>
                 </configuration>
                 <executions>
+                    <execution>
+                        <id>check-feature-files</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>check-gherkin</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>serenity-reports</id>
                         <phase>post-integration-test</phase>
