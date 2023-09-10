@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.DemoLoginPage;
 import questions.UnsuccessfulMessage;
+import questions.UnsuccessfulMessage2;
 import tasks.EnterCredentials;
 import tasks.NavigateTo;
 import utils.Constants;
@@ -60,6 +61,9 @@ public class LoginStepDefinition {
     public void i_should_be_unsuccessfully_logged_in(String message) {
         then(theActorInTheSpotlight()).should(
                 seeThat("The unsuccessful message", UnsuccessfulMessage.displayed(), containsString(message))
+        );
+        then(theActorInTheSpotlight()).should(
+                seeThat("The unsuccessful message2", UnsuccessfulMessage2.displayed2(), containsString(message))
         );
     }
 
