@@ -8,14 +8,15 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.DemoLoginPage;
+import questions.UnsuccessfulMessage;
 import tasks.EnterCredentials;
 import tasks.NavigateTo;
 import utils.Constants;
 import utils.FrameworkProperties;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.then;
-import static net.serenitybdd.screenplay.GivenWhenThen.when;
+import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.*;
 
 
 public class LoginStepDefinition {
@@ -57,9 +58,8 @@ public class LoginStepDefinition {
 
     @Then("I should see the message {string}")
     public void i_should_be_unsuccessfully_logged_in(String message) {
-        then(theActorInTheSpotlight()).attemptsTo(
-                Ensure.that(DemoLoginPage.UNSUCCESSFUL_SIGN_IN_MESSAGE).text().contains(Constants.UNSUCCESSFUL_LOGIN_MESSAGE),
-                Ensure.that(DemoLoginPage.UNSUCCESSFUL_SIGN_IN_MESSAGE).text().contains(message)
+        then(theActorInTheSpotlight()).should(
+                seeThat("The unsuccessful message", UnsuccessfulMessage.displayed(), containsString(message))
         );
     }
 
