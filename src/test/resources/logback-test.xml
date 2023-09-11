@@ -1,4 +1,5 @@
 <configuration>
+    <!-- Defines an "appender" named "STDOUT" that will send logs to the console (standard output). -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
@@ -7,12 +8,26 @@
         </encoder>
     </appender>
 
+    <!-- Define file appender to write logs to a file -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/my-framework.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configures a logger named "root" with a DEBUG log level. This means that this logger will capture all DEBUG-level and higher events. -->
     <logger name="root" level="DEBUG"/>
     <logger name="net.serenitybdd" level="INFO"/>
     <logger name="net.thucydides" level="INFO"/>
 
+    <!-- Configures the root logger with an INFO log level. This serves as a default setting for all loggers that are not explicitly specified in the configuration. -->
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
 
 </configuration>
