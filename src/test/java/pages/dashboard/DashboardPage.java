@@ -1,4 +1,4 @@
-package pages;
+package pages.dashboard;
 
 public class DashboardPage {
 }

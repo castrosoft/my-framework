@@ -3,7 +3,7 @@ package tasks;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
-import pages.DemoLoginPage;
+import pages.leftmenu.DemoLoginPage;
 
 public class NavigateTo {
 

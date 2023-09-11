@@ -5,8 +5,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import pages.DemoLoginPage;
-import utils.EncodePassword;
+import pages.leftmenu.DemoLoginPage;
 
 public class EnterCredentials implements Task {
     private final String username;

@@ -1,4 +1,4 @@
-package pages;
+package pages.leftmenu;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.screenplay.targets.Target;

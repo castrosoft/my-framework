@@ -2,7 +2,7 @@ package questions;
 
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Text;
-import pages.DemoLoginPage;
+import pages.leftmenu.DemoLoginPage;
 
 public class UnsuccessfulMessage2 {
     public static Question<String> displayed2() {

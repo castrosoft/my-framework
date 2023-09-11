@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.DemoLoginPage;
+import pages.leftmenu.DemoLoginPage;
 import questions.UnsuccessfulMessage;
 import questions.UnsuccessfulMessage2;
 import tasks.EnterCredentials;

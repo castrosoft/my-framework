@@ -3,7 +3,7 @@ package questions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Text;
-import pages.DemoLoginPage;
+import pages.leftmenu.DemoLoginPage;
 
 public class UnsuccessfulMessage implements Question<String> {
 
