@@ -12,7 +12,7 @@ public class FrameworkProperties {
     public String getProperty(String key) {
         try {
             Properties properties = new Properties();
-            String propertyFileName = "credentials.properties";
+            String propertyFileName = "serenity.properties";
 
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertyFileName);
 
