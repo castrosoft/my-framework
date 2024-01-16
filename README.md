@@ -36,9 +36,15 @@ No special configuration is required for this project. You can open the project 
 
 To run the project's tests, use Maven. Make sure you are in the project's root directory and run the following command:
 ```bash
-mvn clean verify
+mvn clean verify -Denvironment=chrome
 ```
-This will compile the project, run the tests, and verify its integrity.
+This will compile the project, run the tests, and verify its integrity on Chrome browser.
+However you can choose another browser (firefox or edge).
+
+```bash
+mvn clean verify -Denvironment=chrome -Dcucumber.filter.tags="@tag"
+```
+To run a specific feature's tag.
 
 
 ## 5.   Contribute
