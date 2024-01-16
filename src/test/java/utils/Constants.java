@@ -9,4 +9,27 @@ public class Constants {
     public static final String INVALID_PASSWORD = "invalid-password";
     public static final String UNSUCCESSFUL_LOGIN_MESSAGE = "Login was unsuccessful. Please correct the errors and try again.";
     public static final String WEBDRIVER_BASE_URL = from(WebDriverConfiguredEnvironment.getEnvironmentVariables()).getProperty("webdriver.base.url");
+
+    // Dashboard
+    public static final String DASHBOARD = "Dashboard";
+
+    // Catalog
+    public static final String CATALOG = "Catalog";
+    public static final String PRODUCTS = "Products";
+
+    // Sales
+
+    // Customers
+
+    // Promotions
+
+    // Content management
+
+    // Configuration
+
+    // System
+
+    // Reports
+
+    // Help
 }
